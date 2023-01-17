@@ -1,0 +1,2 @@
+# argocd
+My ArgoCD Configuration
