@@ -1,15 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kibana
+  name: fluentbit
   namespace: argocd
 spec:
   destination:
-    name: ''
-    namespace: kibana
+    namespace: fluentbit
     server: 'https://kubernetes.default.svc'
   source:
-    path: apps/operations/logging/kibana
+    path: apps/operations/logging/fluent-bit
     repoURL: 'https://github.com/ajdann/argocd'
     targetRevision: HEAD
     helm:
