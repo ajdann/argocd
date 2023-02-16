@@ -1,3 +1,13 @@
+---
+# Disable privileged init Container creation.
+sysctlInitContainer:
+  enabled: false
+
+# Restrict the use of the memory-mapping when sysctlInitContainer is disabled.
+esConfig:
+  elasticsearch.yml: |
+    node.store.allow_mmap: false
+
 # Permit co-located instances for solitary minikube virtual machines.
 antiAffinity: "soft"
 
@@ -16,7 +26,7 @@ resources:
 # Request smaller persistent volumes.
 volumeClaimTemplate:
   accessModes: [ "ReadWriteOnce" ]
-  storageClassName: "standard"
+  storageClassName: "microk8s-hostpath"
   resources:
     requests:
-      storage: 100M    
+      storage: 100M

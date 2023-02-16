@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: Elastic
+spec:
+  destination:
+    name: ''
+    namespace: ' logging'
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: apps\operations\logging\elasticsearch
+    repoURL: 'https://github.com/ajdann/argocd'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - apps\operations\logging\elastic\values.yaml
+  sources: []
+  project: operations
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
