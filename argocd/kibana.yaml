@@ -1,21 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elasticsearch
-  namespace: argocd
+  name: kibana
 spec:
   destination:
     name: ''
-    namespace: logging
+    namespace: kibana
     server: 'https://kubernetes.default.svc'
   source:
-    path: apps/operations/logging/elasticsearch
+    path: apps/operations/logging/kibana
     repoURL: 'https://github.com/ajdann/argocd'
     targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
-        - examples/minikube/values.yaml
   sources: []
   project: operations
   syncPolicy:

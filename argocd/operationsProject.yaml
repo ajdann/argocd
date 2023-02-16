@@ -1,23 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  generation: 3
   name: operations
   namespace: argocd
-  # Finalizer that ensures that project is not deleted until it is not referenced by any application
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  # Project description
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
   description: Operations go here
-
-  # Allow manifests to deploy from any Git repos
-  sourceRepos:
-  - '*'
-
-  # Enables namespace orphaned resource monitoring.
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
   orphanedResources:
     warn: false
-
-
-
-
+  sourceRepos:
+  - '*'
