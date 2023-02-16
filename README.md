@@ -17,9 +17,17 @@ kubectl port-forward  svc/argo-argocd-server 8080:443 -n argocd
 
 
 ## login with admin user and below token (as in documentation):
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
+
 
 ## Apply configuration
 kubectl apply -f ./argocd
 
- Webhook can also be configured so changes can be applied instantly
+
+ ### minikube configuration
+minikube addons enable default-storageclass
+minikube addons enable storage-provisioner
+
+
+###
+kubectl -n logging get secret elasticsearch-master-credentials -o jsonpath="{.data.password}" | base64 --decode && echo
+kubectl -n logging get secret elasticsearch-master-credentials -o jsonpath="{.data.username}" | base64 --decode && echo
