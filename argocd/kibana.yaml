@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: kibana
+    namespace: logging
     server: 'https://kubernetes.default.svc'
   source:
     path: apps/operations/logging/kibana
