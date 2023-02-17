@@ -167,7 +167,7 @@ service:
 ingress:
   ## If true, Kubernetes Dashboard Ingress will be created.
   ##
-  enabled: false
+  enabled: true
 
   ## Kubernetes Dashboard Ingress labels
   # labels:
@@ -186,12 +186,12 @@ ingress:
   #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 
   ## Kubernetes Dashboard Ingress Class
-  # className: "example-lb"
+  className: "nginx"
 
   ## Kubernetes Dashboard Ingress paths
   ## Both `/` and `/*` are required to work on gce ingress.
   paths:
-    - /
+    - /dashboard
   #  - /*
 
   ## Custom Kubernetes Dashboard Ingress paths. Will override default paths.
@@ -214,8 +214,8 @@ ingress:
   ## Kubernetes Dashboard Ingress hostnames
   ## Must be provided if Ingress is enabled
   ##
-  # hosts:
-  #   - kubernetes-dashboard.domain.com
+  hosts:
+    - minikube
   ## Kubernetes Dashboard Ingress TLS configuration
   ## Secrets must be manually created in the namespace
   ##
