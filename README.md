@@ -26,7 +26,8 @@ kubectl apply -f ./argocd
  ### minikube configuration
 minikube addons enable default-storageclass
 minikube addons enable storage-provisioner
-
+minikube addons enable ingress
+echo "$(minikube ip) minikube" | sudo tee -a /etc/hosts
 
 ###
 kubectl -n logging get secret elasticsearch-master-credentials -o jsonpath="{.data.password}" | base64 --decode && echo

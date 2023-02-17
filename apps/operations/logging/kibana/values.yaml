@@ -143,9 +143,9 @@ ingress:
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: kibana-example.local
+    - host: minikube
       paths:
-        - path: /
+        - path: /kibana
   #tls: []
   #  - secretName: chart-example-tls
   #    hosts:
