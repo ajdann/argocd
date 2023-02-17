@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     name: ''
-    namespace: kuberneted-dashboard
+    namespace: kubernetes-dashboard
     server: 'https://kubernetes.default.svc'
   source:
     path: apps/operations/kubernetes-dashboard
