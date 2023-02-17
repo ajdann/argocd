@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: policies
+spec:
+  destination:
+    name: kind
+    namespace: kyverno
+    server: ''
+  source:
+    path: apps/operations/kyverno
+    repoURL: 'https://github.com/ajdann/argocd'
+    targetRevision: main
+    directory:
+      recurse: true
+  sources: []
+  project: operations
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
